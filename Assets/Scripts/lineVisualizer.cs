@@ -5,7 +5,7 @@ public class LineVisualizer : MonoBehaviour
 {  
 	public float xOffset;										// Offset for the visualization along the x axis
 	private AudioSource aSource;  								// Audio Source
-	private float[] samples = new float[256];  					// Sample Rate
+	private float[] samples = new float[256]; 					// Sample Rate
 	private LineRenderer lRenderer;  							// Line renderer to draw the information
 	private Transform audioVisTransform;						// Transform of audio visualizer
 	public GameObject cube;  									// Prefab to determine line height, mesh will not be rendered
