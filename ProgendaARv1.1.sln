@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2015
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProgendaARv1.1.CSharp", "ProgendaARv1.1.CSharp.csproj", "{61E587DD-DB1D-6B8E-8CFB-6FF97EB5B8BF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProgendaARv1.1.CSharp.Editor", "ProgendaARv1.1.CSharp.Editor.csproj", "{59A27C0F-5E81-85C0-BBB7-3812497DFFBC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{61E587DD-DB1D-6B8E-8CFB-6FF97EB5B8BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{61E587DD-DB1D-6B8E-8CFB-6FF97EB5B8BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{61E587DD-DB1D-6B8E-8CFB-6FF97EB5B8BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{61E587DD-DB1D-6B8E-8CFB-6FF97EB5B8BF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{59A27C0F-5E81-85C0-BBB7-3812497DFFBC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{59A27C0F-5E81-85C0-BBB7-3812497DFFBC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{59A27C0F-5E81-85C0-BBB7-3812497DFFBC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{59A27C0F-5E81-85C0-BBB7-3812497DFFBC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

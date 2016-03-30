@@ -47,7 +47,7 @@ public class getMicAudio : MonoBehaviour
         audio.clip = Microphone.Start(audioOutDevice, true, 10, 44100);
 
         audio.loop = true; //reusing audio clip, setting it to loop
-        audio.mute = true; //mute to avoid overlapping audio
+        //audio.mute = true; //mute to avoid overlapping audio
         while (!(Microphone.GetPosition(audioOutDevice) > 0)) { } //wait for sound (gets sample position of mic)
         audio.Play();
     }

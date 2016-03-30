@@ -3,21 +3,22 @@ using System.Collections;
 
 public class MoleculeVisualizer : MonoBehaviour {
 
-	public int detail; // Level of detail of the audio information (samples)
-	public float minValue; // Min value of the bars of the visualizer
-	public float amplitude; // Audio level
-	public float scaleMultiplier; // How much the visualizer will be scaled
+	public int detail = 2048; // Level of detail of the audio information (samples)
+	
+	public float amplitude = 0.1f; // Audio level
+	public float scaleMultiplier= 100f; // How much the visualizer will be scaled
 	public GameObject visualizer; // Game object used as visualizer
 	public GameObject[] moleculeGroups; // Groups to show/hide
 	private Vector3 startScale; // Start scale of the visualizer
 
 	// Use this for initialization
 	void Start () {
-		detail = 2048;
-		minValue = 1.0f;
+        /* Default values
+        detail = 2048;
 		amplitude = 0.1f;
 		scaleMultiplier = 100f;
-		startScale = transform.localScale;
+        */
+        startScale = transform.localScale;
 	}
 
 	// Update is called once per frame
