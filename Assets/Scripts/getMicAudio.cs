@@ -7,7 +7,7 @@ using System.Collections;
 public class getMicAudio : MonoBehaviour
 {
 
-    public AudioSource audio;
+    public AudioSource audioSource;
     public int audioSamplesToTake = 64;
     public int audioSampleChannels = 0; //1=mono, 2=stereo, etc.
     private string audioOutDevice;
@@ -19,11 +19,13 @@ public class getMicAudio : MonoBehaviour
     public float audioVolume;
     private bool isThereDevice = false;
 
+    public bool micIsActive = true;
+
     // Use this for initialization
     void Start()
     {
         //getting audio source
-        audio = GetComponent<AudioSource>();
+        audioSource = GetComponent<AudioSource>();
 
         //getting audio device
         try
@@ -44,59 +46,63 @@ public class getMicAudio : MonoBehaviour
 
         //start recording
         //null returns default device
-        audio.clip = Microphone.Start(audioOutDevice, true, 10, 44100);
+        audioSource.clip = Microphone.Start(audioOutDevice, true, 10, 44100);
 
-        audio.loop = true; //reusing audio clip, setting it to loop
+        audioSource.loop = true; //reusing audio clip, setting it to loop
         //audio.mute = true; //mute to avoid overlapping audio
         while (!(Microphone.GetPosition(audioOutDevice) > 0)) { } //wait for sound (gets sample position of mic)
-        audio.Play();
+        audioSource.Play();
     }
 
     // Update is called once per frame
     void Update()
     {
 
-        //make sure there is input 
-        if (isThereDevice == true)
+        if (micIsActive)
         {
-
-            //timer until renewing the recording
-            recTimer += Time.deltaTime;
-
-            if (recTimer >= recRefreshTime)
+            //make sure there is input 
+            if (isThereDevice == true)
             {
-                StopRecording();
-                StartRecording();
-                recTimer = 0;
+
+                //timer until renewing the recording
+                recTimer += Time.deltaTime;
+
+                if (recTimer >= recRefreshTime)
+                {
+                    StopRecording();
+                    StartRecording();
+                    recTimer = 0;
+                }
             }
         }
-
+       
         //for simplicity's sake, this allows for tweaking of input sound
-        audioVolume = NormalizeAudio() * audioListenerSensitivity;
+       // audioVolume = NormalizeAudio() * audioListenerSensitivity;
     }
 
     //Begin mic recording into audio clip, replacing old clip
-    void StartRecording()
+    public void StartRecording()
     {
-        audio.clip = Microphone.Start(audioOutDevice, true, 10, 44100);
+        audioSource.clip = Microphone.Start(audioOutDevice, true, 10, 44100);
         while (!(Microphone.GetPosition(audioOutDevice) > 0)) { } //wait for sound
-        audio.Play();
+        audioSource.Play();
     }
 
     //Stop mic recording (to allow for new audio clip)
-    void StopRecording()
+    public void StopRecording()
     {
-        audio.Stop();
+        audioSource.Stop();
         Microphone.End(audioOutDevice);
     }
 
+    /*
     float NormalizeAudio()
     {
 
         //take and store samples
         float[] outputData = new float[audioSamplesToTake];
         float s = 0;
-        audio.GetOutputData(outputData, audioSampleChannels);
+        audioSource.GetOutputData(outputData, audioSampleChannels);
 
         //finding the average of the samples
         foreach (float i in outputData)
@@ -106,4 +112,5 @@ public class getMicAudio : MonoBehaviour
 
         return s / audioSamplesToTake;
     }
+    */
 }

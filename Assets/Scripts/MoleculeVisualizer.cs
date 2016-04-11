@@ -4,9 +4,10 @@ using System.Collections;
 public class MoleculeVisualizer : MonoBehaviour {
 
 	public int detail = 2048; // Level of detail of the audio information (samples)
-	
-	public float amplitude = 0.1f; // Audio level
-	public float scaleMultiplier= 100f; // How much the visualizer will be scaled
+
+    //public float amplitude = 0.1f; // Audio level
+    public float amplitudeMultiplier = 0.1f;
+    public float scaleMultiplier= 100f; // How much the visualizer will be scaled
 	public GameObject visualizer; // Game object used as visualizer
 	public GameObject[] moleculeGroups; // Groups to show/hide
 	private Vector3 startScale; // Start scale of the visualizer
@@ -28,7 +29,7 @@ public class MoleculeVisualizer : MonoBehaviour {
 		float packagedData = 0.0f;
 
 		for (int x = 0; x < info.Length; x++) {
-			packagedData += System.Math.Abs (info[x]); // Assign the value of the audio output data to a value
+			packagedData += System.Math.Abs (info[x]) * amplitudeMultiplier; // Assign the value of the audio output data to a value
 		}
 
 		for (int i = 1; i < moleculeGroups.Length; i++) {

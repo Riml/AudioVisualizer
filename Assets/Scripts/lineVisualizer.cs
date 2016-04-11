@@ -12,8 +12,9 @@ public class LineVisualizer : MonoBehaviour
 	private Vector3 cubePos;  									// Temp cube position to draw the line points with
 	private Transform[] cubesTransform;  						// Store the Transforms of all instantiated cubes   
 	private Vector3 gravity = new Vector3(0.0f,0.25f,0.0f);  	// The velocity that the cubes will drop 
+    public float amplitudeMultiplier = 0.1f;
 
-	void Awake ()  
+    void Awake ()  
 	{  
 		this.audioVisTransform = GetComponent<Transform> ();
 		this.aSource = GetComponent<AudioSource>();  
@@ -43,7 +44,7 @@ public class LineVisualizer : MonoBehaviour
 		for(int i = 0; i < samples.Length; i++)  
 		{  
 			// Set cube position
-			cubePos.Set(cubesTransform[i].position.x, Mathf.Clamp(samples[i]*(300 + i*i), 0, 300), cubesTransform[i].position.z);  
+			cubePos.Set(cubesTransform[i].position.x, Mathf.Clamp(samples[i]*(300 + i * i) *amplitudeMultiplier, 0, 300), cubesTransform[i].position.z);  //300+i*i
 
 			// If the new position is greater set it, otherwise let it fall
 			if(cubePos.y >= cubesTransform[i].position.y)  
